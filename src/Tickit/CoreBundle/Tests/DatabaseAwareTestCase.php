@@ -6,7 +6,21 @@
 
 namespace Tickit\CoreBundle\Tests;
 
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DatabaseAwareTestCase {
-
+/**
+ * Database aware test cases
+ *
+ * @package Tickit\CoreBundle\Tests
+ */
+class DatabaseAwareTestCase extends WebTestCase
+{
+    /**
+     * Initialise test database
+     */
+    public function setUp()
+    {
+        $kernel = $this->createKernel();
+        LoadTestFixtures::getInstance()->initialise($kernel);
+    }
 }

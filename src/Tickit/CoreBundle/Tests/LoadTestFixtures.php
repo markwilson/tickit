@@ -6,17 +6,21 @@
 
 namespace Tickit\CoreBundle\Tests;
 
-use Doctrine\Bundle\DoctrineBundle\Registry;
+use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
+use Doctrine\Common\DataFixtures\Loader;
+use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * Singleton for controlling test database
  *
  * @package Tickit\CoreBundle\Tests
  */
-class DataFixtures
+class LoadTestFixtures
 {
     /**
-     * @var DataFixtures $instance Singleton instance
+     * @var LoadTestFixtures $instance Singleton instance
      */
     private static $instance;
 
@@ -26,19 +30,19 @@ class DataFixtures
     private $initialised = false;
 
     /**
+     * @var Kernel $kernel Kernel to gain access to the container
+     */
+    private $kernel;
+
+    /**
      * Get the singleton instance
      *
-     * @return DataFixtures
+     * @return LoadTestFixtures
      */
     public static function getInstance()
     {
         if (!isset(self::$instance)) {
-            $instance = new self();
-
-            // clear the database
-            $instance->reset(false);
-
-            self::$instance = $instance;
+            self::$instance = new self();
         }
 
         return self::$instance;
@@ -57,43 +61,52 @@ class DataFixtures
     /**
      * Initialise the test database
      */
-    public function initialise()
+    public function initialise(Kernel $kernel)
     {
         if (!$this->isInitialised()) {
-            $doctrine = $this->getDoctrine();
-
-            // @todo: load test fixtures
-
+            $this->kernel = $kernel;
+            $this->loadDataFixtures();
         }
     }
 
     /**
-     * Get the doctrine service
+     * Reset the data fixtures
+     */
+    public function reset()
+    {
+        $this->loadDataFixtures();
+    }
+
+    /**
+     * Load data fixtures
+     */
+    private function loadDataFixtures()
+    {
+        $em = $this->getEntityManager();
+
+        $loader = new Loader();
+        $loader->loadFromDirectory(__DIR__ . DIRECTORY_SEPARATOR . 'DataFixtures');
+        $purger = new ORMPurger($em);
+        $executor = new ORMExecutor($em, $purger);
+        $executor->execute($loader->getFixtures());
+    }
+
+    /**
+     * Get entity manager
      *
-     * @return Registry
+     * @return EntityManager
      *
      * @throws \LogicException
      */
-    public function getDoctrine()
+    private function getEntityManager()
     {
-        if (!$this->container->has('doctrine')) {
-            throw new \LogicException('The DoctrineBundle is not registered in your application.');
+        $doctrineEm = 'doctrine.orm.entity_manager';
+
+        $container = $this->kernel->getContainer();
+        if (!$container->has('doctrine.orm.entity_manager')) {
+            throw new \LogicException('Entity manager not available');
         }
 
-        return $this->container->get('doctrine');
-    }
-
-    /**
-     * Reset the test database
-     *
-     * @param bool $reinitialise Flag specifying whether or not to immediately reinitialise the database
-     */
-    public function reset($reinitialise = true)
-    {
-        // @todo: clear the database
-
-        if ($reinitialise) {
-            $this->initialise();
-        }
+        return $container->get($doctrineEm);
     }
 }
