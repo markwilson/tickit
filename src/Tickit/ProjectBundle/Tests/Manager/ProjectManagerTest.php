@@ -2,14 +2,14 @@
 
 namespace Tickit\ProjectBundle\Tests\Manager;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Tickit\CoreBundle\Tests\DatabaseAwareTestCase;
 
 /**
  * Tests for the project manager
  *
  * @author James Halsall <james.t.halsall@googlemail.com>
  */
-class ProjectManagerTest extends WebTestCase
+class ProjectManagerTest extends DatabaseAwareTestCase
 {
     /**
      * Test to ensure that the service exists in the container
