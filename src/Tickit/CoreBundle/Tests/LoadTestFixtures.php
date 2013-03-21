@@ -60,10 +60,13 @@ class LoadTestFixtures
 
     /**
      * Initialise the test database
+     *
+     * @param Kernel $kernel Kernel to gain access to doctrine through container
      */
     public function initialise(Kernel $kernel)
     {
         if (!$this->isInitialised()) {
+            $kernel->boot();
             $this->kernel = $kernel;
             $this->loadDataFixtures();
         }
@@ -85,7 +88,8 @@ class LoadTestFixtures
         $em = $this->getEntityManager();
 
         $loader = new Loader();
-        $loader->loadFromDirectory(__DIR__ . DIRECTORY_SEPARATOR . 'DataFixtures');
+//        $loader->loadFromDirectory(__DIR__ . DIRECTORY_SEPARATOR . 'DataFixtures');
+        $loader->loadFromDirectory(__DIR__ . '/../../');
         $purger = new ORMPurger($em);
         $executor = new ORMExecutor($em, $purger);
         $executor->execute($loader->getFixtures());
