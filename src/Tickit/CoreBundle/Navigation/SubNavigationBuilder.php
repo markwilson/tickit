@@ -2,18 +2,19 @@
 
 namespace Tickit\CoreBundle\Navigation;
 
+
 /**
- * Main navigation builder.
+ * Sub navigation builder.
  *
- * Responsible for building the main navigation structure.
+ * Responsible for building the sub navigation structure.
  *
  * @package Tickit\CoreBundle\Navigation
  * @author  James Halsall <james.t.halsall@googlemail.com>
  */
-class MainNavigationBuilder extends AbstractBuilder implements BuilderInterface
+class SubNavigationBuilder extends AbstractBuilder implements BuilderInterface
 {
     /**
-     * Builds the main navigation component.
+     * Builds the sub navigation component.
      *
      * @return mixed
      */
