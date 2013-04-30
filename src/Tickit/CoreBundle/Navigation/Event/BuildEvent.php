@@ -57,4 +57,24 @@ class BuildEvent extends Event
     {
         //todo
     }
+
+    /**
+     * Gets the featured item on the navigation
+     *
+     * @return array
+     */
+    public function getFeaturedItem()
+    {
+        return $this->featuredItem;
+    }
+
+    /**
+     * Gets navigation items
+     *
+     * @return array
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
 }

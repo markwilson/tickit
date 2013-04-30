@@ -2,6 +2,8 @@
 
 namespace Tickit\CoreBundle\Navigation;
 
+use Tickit\CoreBundle\Navigation\Event\BuildEvent;
+use Tickit\CoreBundle\TickitCoreEvents;
 
 /**
  * Sub navigation builder.
@@ -20,6 +22,7 @@ class SubNavigationBuilder extends AbstractBuilder implements BuilderInterface
      */
     public function build()
     {
-        // TODO: Implement build() method.
+        $event = new BuildEvent();
+        $this->dispatcher->dispatch(TickitCoreEvents::SUB_NAVIGATION_BUILD, $event);
     }
 }

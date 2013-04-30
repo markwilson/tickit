@@ -19,35 +19,7 @@ class NavigationController extends AbstractCoreController
      */
     public function topNavigationAction()
     {
-        /** @var \Symfony\Component\Routing\Router $router */
-        $router = $this->get('router');
-
-        $items = array(
-            array(
-                'name' => 'Dashboard',
-                'route' => $router->generate('dashboard_index')
-            ),
-            array(
-                'name' => 'Tickets',
-                'route' => '#'
-            ),
-            array(
-                'name' => 'Projects',
-                'route' => $router->generate('project_index')
-            ),
-            array(
-                'name' => 'Teams',
-                'route' => $router->generate('team_index')
-            ),
-            array(
-                'name' => 'Users',
-                'route' => $router->generate('user_index')
-            ),
-            array(
-                'name' => 'System',
-                'route' => '#'
-            )
-        );
+        $items = $this->get('tickit.main_navigation_builder')->build();
 
         return $this->render('TickitCoreBundle:Navigation:top-navigation.html.twig', array('navigation' => $items));
     }
@@ -62,6 +34,8 @@ class NavigationController extends AbstractCoreController
      */
     public function subNavigationAction()
     {
-        return $this->render('TickitCoreBundle:Navigation:sub-navigation.html.twig');
+        $items = $this->get('tickit.sub_navigation_builder')->build();
+
+        return $this->render('TickitCoreBundle:Navigation:sub-navigation.html.twig', array('navigation' => $items));
     }
 }
