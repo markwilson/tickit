@@ -32,6 +32,6 @@ class BeforeBuildEvent extends Event
      */
     public function addItem($name, $url, $order)
     {
-        $this->items[$name] = $url
+        //todo
     }
 }
