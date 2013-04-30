@@ -10,6 +10,14 @@
             <argument>%kernel.root_dir%/config/extra</argument>
             <argument>%kernel.environment%</argument>
         </service>
+
+        <service id="tickit.main_navigation_builder" class="Tickit\CoreBundle\Navigation\MainNavigationBuilder">
+            <argument type="service" id="event_dispatcher" />
+        </service>
+
+        <service id="tickit.sub_navigation_builder" class="Tickit\CoreBundle\Navigation\SubNavigationBuilder">
+            <argument type="service" id="event_dispatcher" />
+        </service>
     </services>
 
 </container>
