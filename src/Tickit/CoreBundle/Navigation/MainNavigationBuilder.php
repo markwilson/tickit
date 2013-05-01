@@ -18,11 +18,13 @@ class MainNavigationBuilder extends AbstractBuilder implements BuilderInterface
     /**
      * Builds the main navigation component.
      *
-     * @return mixed
+     * @return BuildEvent
      */
     public function build()
     {
         $event = new BuildEvent();
         $this->dispatcher->dispatch(TickitCoreEvents::MAIN_NAVIGATION_BUILD, $event);
+
+        return $event->getItems();
     }
 }
