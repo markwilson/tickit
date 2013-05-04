@@ -43,16 +43,13 @@ class BuildEvent extends Event
     /**
      * Adds an item to the navigation.
      *
-     * @param string  $text     The text for the item (this is what will be output in the navigation view)
-     * @param Route   $route    The route for the item
-     * @param integer $priority The order priority number, the higher this is the further up the navigation it will sit
+     * @param NavigationItem $navigationItem Navigation item
      *
      * @return void
      */
-    public function addItem($text, Route $route, $priority)
+    public function addItem(NavigationItem $navigationItem)
     {
-        $navigationItem = new NavigationItem($text, $route);
-        $this->items->insert($navigationItem, $priority);
+        $this->items->insert($navigationItem, $navigationItem->getPriority());
     }
 
     /**

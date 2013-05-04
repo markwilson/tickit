@@ -4,27 +4,25 @@
  * @author Mark Wilson <mark@89allport.co.uk>
  */
 
-namespace Tickit\DashboardBundle\Listener;
+namespace Tickit\TeamBundle\Listener;
 
 use Tickit\CoreBundle\Entity\NavigationItem;
 use Tickit\CoreBundle\Listener\NavigationBuilder as AbstractNavigationBuilder;
 
 /**
- * Dashboard navigation builder
+ * Team navigation builder
  *
- * @package Tickit\DashboardBundle\Listener
+ * @package Tickit\TeamBundle\Listener
  */
 class NavigationBuilder extends AbstractNavigationBuilder
 {
     /**
-     * Get navigation routes
-     *
-     * @return array
+     * {@inheritDoc}
      */
     public function getRoutes()
     {
         return array(
-            new NavigationItem('Dashboard', 'dashboard_index', 10)
+            new NavigationItem('Teams', 'team_index', 5)
         );
     }
 }

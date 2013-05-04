@@ -22,22 +22,44 @@ class NavigationItem
      */
     private $text;
     /**
-     * Navigation route
+     * Navigation URL
      *
-     * @var Route $route
+     * @var string $url
      */
-    private $route;
+    private $routeName;
+    /**
+     * Priority for item
+     *
+     * @var int $priority
+     */
+    private $priority;
+    /**
+     * Additional parameters for route generation
+     *
+     * @var array $params
+     */
+    private $params;
+    /**
+     * Generated URL
+     *
+     * @var string
+     */
+    private $url = '';
 
     /**
      * Create a navigation item
      *
-     * @param string $text  Text to display in navigation
-     * @param Route  $route Navigation route
+     * @param string $text      Text to display in navigation
+     * @param string $routeName Navigation URL
+     * @param int    $priority  Priority for this item
+     * @param array  $params    Additional paramaters for route generation
      */
-    public function __construct($text, Route $route)
+    public function __construct($text, $routeName, $priority, array $params = array())
     {
-        $this->text  = $text;
-        $this->route = $route;
+        $this->text      = $text;
+        $this->routeName = $routeName;
+        $this->priority  = $priority;
+        $this->params    = $params;
     }
 
     /**
@@ -51,22 +73,52 @@ class NavigationItem
     }
 
     /**
-     * Get navigation route
-     *
-     * @return Route
-     */
-    public function getRoute()
-    {
-        return $this->route;
-    }
-
-    /**
-     * Shortcut function to get navigation path
+     * Get navigation URL
      *
      * @return string
      */
-    public function getRoutePath()
+    public function getRouteName()
     {
-        return $this->getRoute()->getPath();
+        return $this->routeName;
+    }
+
+    /**
+     * Get additional parameters
+     *
+     * @return array
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    /**
+     * Get navigation priority
+     *
+     * @return int
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
+     * Set navigation URL
+     *
+     * @param string $url New URL
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * Get navigaiton URL
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }
