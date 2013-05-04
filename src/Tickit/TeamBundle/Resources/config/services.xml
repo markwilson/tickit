@@ -4,7 +4,7 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="team_navigation" class="Tickit\TeamBundle\Listener\NavigationBuilder">
+        <service id="tickit_team.team_navigation" class="Tickit\TeamBundle\Listener\NavigationBuilder">
             <argument type="service" id="router" />
             <tag name="kernel.event_listener" event="tickit.event.main_navigation_build" method="onBuild"/>
         </service>
