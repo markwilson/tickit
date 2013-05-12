@@ -33,11 +33,31 @@ class BuildEvent extends Event
     protected $items;
 
     /**
-     * Initialise the navigation items
+     * Identifier for the navigation
+     *
+     * @var string $name
      */
-    public function __construct()
+    protected $name;
+
+    /**
+     * Initialise the navigation items
+     *
+     * @param string $name Identifier for the navigation
+     */
+    public function __construct($name)
     {
+        $this->name  = $name;
         $this->items = new SplPriorityQueue();
+    }
+
+    /**
+     * Get the navigation identifier
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**

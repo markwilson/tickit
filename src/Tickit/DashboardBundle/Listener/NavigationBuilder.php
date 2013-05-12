@@ -17,14 +17,17 @@ use Tickit\CoreBundle\Listener\NavigationBuilder as AbstractNavigationBuilder;
 class NavigationBuilder extends AbstractNavigationBuilder
 {
     /**
-     * Get navigation routes
-     *
-     * @return array
+     * {@inheritDoc}
      */
-    public function getRoutes()
+    public function getRoutes($name)
     {
-        return array(
-            new NavigationItem('Dashboard', 'dashboard_index', 10)
-        );
+        switch ($name) {
+            case 'main':
+                return array(
+                    new NavigationItem('Dashboard', 'dashboard_index', 10)
+                );
+            default:
+                return array();
+        }
     }
 }

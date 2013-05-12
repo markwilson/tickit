@@ -22,7 +22,7 @@ class SubNavigationBuilder extends AbstractBuilder implements BuilderInterface
      */
     public function build()
     {
-        $event = new BuildEvent();
-        $this->dispatcher->dispatch(TickitCoreEvents::SUB_NAVIGATION_BUILD, $event);
+//        $event = new BuildEvent();
+//        $this->dispatcher->dispatch(TickitCoreEvents::SUB_NAVIGATION_BUILD, $event);
     }
 }

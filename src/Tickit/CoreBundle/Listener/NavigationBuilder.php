@@ -24,9 +24,11 @@ abstract class NavigationBuilder
      * Should take multi-dimensional array consisting of text, route name, and priority
      * e.g. array(array('text', 'route_name', 0))
      *
+     * @param string $name Identifier for navigation
+     *
      * @return NavigationItem[]
      */
-    abstract public function getRoutes();
+    abstract public function getRoutes($name);
 
     /**
      * Router interface
@@ -54,7 +56,7 @@ abstract class NavigationBuilder
      */
     public function onBuild(BuildEvent $event)
     {
-        foreach ($this->getRoutes() as $item) {
+        foreach ($this->getRoutes($event->getName()) as $item) {
             $routeName = $item->getRouteName();
 
             if ($this->router instanceof Router) {

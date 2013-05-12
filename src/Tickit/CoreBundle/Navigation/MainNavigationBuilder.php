@@ -22,7 +22,7 @@ class MainNavigationBuilder extends AbstractBuilder implements BuilderInterface
      */
     public function build()
     {
-        $event = new BuildEvent();
+        $event = new BuildEvent('main');
         $this->dispatcher->dispatch(TickitCoreEvents::MAIN_NAVIGATION_BUILD, $event);
 
         return $event->getItems();

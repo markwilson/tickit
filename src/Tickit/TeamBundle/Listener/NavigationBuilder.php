@@ -19,10 +19,15 @@ class NavigationBuilder extends AbstractNavigationBuilder
     /**
      * {@inheritDoc}
      */
-    public function getRoutes()
+    public function getRoutes($name)
     {
-        return array(
-            new NavigationItem('Teams', 'team_index', 5)
-        );
+        switch ($name) {
+            case 'main':
+                return array(
+                    new NavigationItem('Teams', 'team_index', 5)
+                );
+            default:
+                return array();
+        }
     }
 }
