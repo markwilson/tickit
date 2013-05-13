@@ -7,27 +7,26 @@
 namespace Tickit\TeamBundle\Listener;
 
 use Tickit\CoreBundle\Entity\NavigationItem;
-use Tickit\CoreBundle\Listener\NavigationBuilder as AbstractNavigationBuilder;
+use Tickit\CoreBundle\Navigation\Event\BuildEvent;
 
 /**
  * Team navigation builder
  *
  * @package Tickit\TeamBundle\Listener
  */
-class NavigationBuilder extends AbstractNavigationBuilder
+class NavigationBuilder
 {
     /**
-     * {@inheritDoc}
+     * Build event for dashboard navigation
+     *
+     * @param BuildEvent $event Navigation build event
      */
-    public function getRoutes($name)
+    public function onBuild(BuildEvent $event)
     {
-        switch ($name) {
+        switch ($event->getNavigationName()) {
             case 'main':
-                return array(
-                    new NavigationItem('Teams', 'team_index', 5)
-                );
-            default:
-                return array();
+                $event->addItem(new NavigationItem('Team', 'team_index', 5));
+                break;
         }
     }
 }

@@ -39,12 +39,6 @@ class NavigationItem
      * @var array $params
      */
     private $params;
-    /**
-     * Generated URL
-     *
-     * @var string
-     */
-    private $url = '';
 
     /**
      * Create a navigation item
@@ -100,25 +94,5 @@ class NavigationItem
     public function getPriority()
     {
         return $this->priority;
-    }
-
-    /**
-     * Set navigation URL
-     *
-     * @param string $url New URL
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-    }
-
-    /**
-     * Get navigaiton URL
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
     }
 }

@@ -7,27 +7,26 @@
 namespace Tickit\DashboardBundle\Listener;
 
 use Tickit\CoreBundle\Entity\NavigationItem;
-use Tickit\CoreBundle\Listener\NavigationBuilder as AbstractNavigationBuilder;
+use Tickit\CoreBundle\Navigation\Event\BuildEvent;
 
 /**
  * Dashboard navigation builder
  *
  * @package Tickit\DashboardBundle\Listener
  */
-class NavigationBuilder extends AbstractNavigationBuilder
+class NavigationBuilder
 {
     /**
-     * {@inheritDoc}
+     * Build event for dashboard navigation
+     *
+     * @param BuildEvent $event Navigation build event
      */
-    public function getRoutes($name)
+    public function onBuild(BuildEvent $event)
     {
-        switch ($name) {
+        switch ($event->getNavigationName()) {
             case 'main':
-                return array(
-                    new NavigationItem('Dashboard', 'dashboard_index', 10)
-                );
-            default:
-                return array();
+                $event->addItem(new NavigationItem('Dashboard', 'dashboard_index', 10));
+                break;
         }
     }
 }

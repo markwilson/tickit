@@ -2,6 +2,7 @@
 
 namespace Tickit\CoreBundle\Navigation;
 
+use Tickit\CoreBundle\Entity\NavigationItem;
 use Tickit\CoreBundle\Navigation\Event\BuildEvent;
 use Tickit\CoreBundle\TickitCoreEvents;
 
@@ -18,7 +19,7 @@ class MainNavigationBuilder extends AbstractBuilder implements BuilderInterface
     /**
      * Builds the main navigation component.
      *
-     * @return BuildEvent
+     * @return \SplPriorityQueue
      */
     public function build()
     {

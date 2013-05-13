@@ -7,7 +7,7 @@
                 <ul>
                     {% for item in navigation %}
                         <li class="active">
-                            <a href="{{ item.getUrl() }}">{{ item.getText() }}</a>
+                            <a href="{{ path(item.routeName) }}">{{ item.getText() }}</a>
                         </li>
                     {% endfor %}
                 </ul>

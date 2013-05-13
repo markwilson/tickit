@@ -3,6 +3,7 @@
 namespace Tickit\CoreBundle\Navigation;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\Routing\RouterInterface;
 
 /**
  * Abstract implementation of a navigation builder.

@@ -55,7 +55,7 @@ class BuildEvent extends Event
      *
      * @return string
      */
-    public function getName()
+    public function getNavigationName()
     {
         return $this->name;
     }
@@ -101,7 +101,7 @@ class BuildEvent extends Event
     /**
      * Gets navigation items
      *
-     * @return array
+     * @return SplPriorityQueue
      */
     public function getItems()
     {
