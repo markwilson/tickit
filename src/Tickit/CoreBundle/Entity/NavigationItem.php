@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @author Mark Wilson <mark@89allport.co.uk>
- */
-
 namespace Tickit\CoreBundle\Entity;
 
 use Symfony\Component\Routing\Route;
@@ -12,6 +8,7 @@ use Symfony\Component\Routing\Route;
  * Navigation item
  *
  * @package Tickit\CoreBundle\Entity
+ * @author  Mark Wilson <mark@89allport.co.uk>
  */
 class NavigationItem
 {

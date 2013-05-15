@@ -1,20 +1,20 @@
 <?php
 
-namespace Tickit\DashboardBundle\Listener;
+namespace Tickit\UserBundle\Listener;
 
 use Tickit\CoreBundle\Entity\NavigationItem;
 use Tickit\CoreBundle\Navigation\Event\BuildEvent;
 
 /**
- * Dashboard navigation builder
+ * User navigation builder
  *
- * @package Tickit\DashboardBundle\Listener
+ * @package Tickit\UserBundle\Listener
  * @author  Mark Wilson <mark@89allport.co.uk>
  */
 class NavigationBuilder
 {
     /**
-     * Build event for dashboard navigation
+     * Build event for user navigation
      *
      * @param BuildEvent $event Navigation build event
      */
@@ -22,7 +22,7 @@ class NavigationBuilder
     {
         switch ($event->getNavigationName()) {
             case 'main':
-                $event->addItem(new NavigationItem('Dashboard', 'dashboard_index', 10));
+                $event->addItem(new NavigationItem('Users', 'user_index', 6));
                 break;
         }
     }

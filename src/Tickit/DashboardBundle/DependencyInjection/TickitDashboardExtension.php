@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @author Mark Wilson <mark@89allport.co.uk>
- */
-
 namespace Tickit\DashboardBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
@@ -15,6 +11,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
  * DashboardBundle DI extension
  *
  * @package Tickit\DashboardBundle\DependencyInjection
+ * @author  Mark Wilson <mark@89allport.co.uk>
  */
 class TickitDashboardExtension extends Extension
 {
@@ -23,8 +20,6 @@ class TickitDashboardExtension extends Extension
      *
      * @param array            $config    An array of configuration values
      * @param ContainerBuilder $container A ContainerBuilder instance
-     *
-     * @return void
      */
     public function load(array $config, ContainerBuilder $container)
     {
@@ -34,12 +29,9 @@ class TickitDashboardExtension extends Extension
 
     /**
      * {@inheritDoc}
-     *
-     * @return string
      */
     public function getAlias()
     {
         return 'tickit_dashboard';
     }
-
 }

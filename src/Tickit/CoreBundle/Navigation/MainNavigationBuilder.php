@@ -13,6 +13,7 @@ use Tickit\CoreBundle\TickitCoreEvents;
  *
  * @package Tickit\CoreBundle\Navigation
  * @author  James Halsall <james.t.halsall@googlemail.com>
+ * @author  Mark Wilson <mark@89allport.co.uk>
  */
 class MainNavigationBuilder extends AbstractBuilder implements BuilderInterface
 {

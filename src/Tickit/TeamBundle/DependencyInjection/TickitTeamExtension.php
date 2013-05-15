@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @author Mark Wilson <mark@89allport.co.uk>
- */
-
 namespace Tickit\TeamBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
@@ -15,6 +11,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
  * TeamBundle DI extension
  *
  * @package Tickit\TeamBundle\DependencyInjection
+ * @author  Mark Wilson <mark@89allport.co.uk>
  */
 class TickitTeamExtension extends Extension
 {
@@ -34,12 +31,9 @@ class TickitTeamExtension extends Extension
 
     /**
      * {@inheritDoc}
-     *
-     * @return string
      */
     public function getAlias()
     {
         return 'tickit_team';
     }
-
 }

@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @package Tickit\CoreBundle\Controller
  * @author  James Halsall <james.t.halsall@googlemail.com>
+ * @author  Mark Wilson <mark@89allport.co.uk>
  */
 class NavigationController extends AbstractCoreController
 {

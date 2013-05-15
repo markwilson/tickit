@@ -12,6 +12,7 @@ use Symfony\Component\Config\FileLocator;
  *
  * @package Tickit\ProjectBundle\DependencyInjection
  * @author  James Halsall <james.t.halsall@googlemail.com>
+ * @author  Mark Wilson <mark@89allport.co.uk>
  */
 class TickitProjectExtension extends Extension
 {
@@ -29,5 +30,13 @@ class TickitProjectExtension extends Extension
     {
         $xmlLoader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $xmlLoader->load('services.xml');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAlias()
+    {
+        return 'tickit_project';
     }
 }
